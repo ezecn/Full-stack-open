@@ -1,3 +1,11 @@
+const Part = (exercise) => {
+  return(
+    <>
+    <p>{exercise.part} {exercise.exercise}</p>
+    </>
+  )
+}
+
 const Header = (course) => {
   return (
     <>
@@ -7,13 +15,11 @@ const Header = (course) => {
 }
 
 const Content = (exercises) => {
-  console.log(exercises.part2);
-  
   return(
     <>
-      <p>{exercises.part1} {exercises.exercise1}</p>
-      <p>{exercises.part2} {exercises.exercise2} </p>
-      <p>{exercises.part3} {exercises.exercise3}</p>
+      <Part part = {exercises.part1} exercise = {exercises.exercise1}/>
+      <Part part = {exercises.part2} exercise = {exercises.exercise2} />
+      <Part part = {exercises.part3} exercise = {exercises.exercise3} />
     </>
   )
 }
