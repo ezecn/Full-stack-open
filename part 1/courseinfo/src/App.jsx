@@ -8,23 +8,23 @@ const Part = (exercise) => {
 }
 
 const Header = (course) => {
-  console.log(course.title);
+  console.log(course.course.name);
   
   return (
     <>
-      <h1>{course.title}</h1>
+      <h1>{course.course.name}</h1>
     </>
   )
 }
 
 const Content = (exercises) => {
-  console.log(exercises.parts[0].name, exercises.parts[0].exercises); 
+  console.log(exercises.course.parts[1].name);  
   
   return(
     <>
-      <Part part = {exercises.parts[0].name} exercise = {exercises.parts[0].exercises}/>
-      <Part part = {exercises.parts[1].name} exercise = {exercises.parts[1].exercises}/>
-      <Part part = {exercises.parts[2].name} exercise = {exercises.parts[2].exercises}/>
+      <Part part = {exercises.course.parts[0].name} exercise = {exercises.course.parts[0].exercises}/>
+      <Part part = {exercises.course.parts[1].name} exercise = {exercises.course.parts[1].exercises}/>
+      <Part part = {exercises.course.parts[2].name} exercise = {exercises.course.parts[2].exercises}/>
       
     </>
   )
@@ -34,33 +34,36 @@ const Total = (exercises) => {
   /* console.log(exercises) */
   return(
     <>
-      <p>Number of exercises {exercises.parts[0].exercises + exercises.parts[1].exercises + exercises.parts[2].exercises}</p>
+      <p>Number of exercises {exercises.course.parts[0].exercises + exercises.course.parts[1].exercises + exercises.course.parts[2].exercises}</p>
     </>
   )
 }
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
-
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+  console.log(course.parts[0].name);
+  
   return (
     <div>
-      <Header title = {course}/>
-      <Content parts = {parts} />
-      <Total parts = {parts} />
+      <Header course = {course}/>
+      <Content course = {course} />
+      <Total course = {course} />
     </div>
   )
 }
